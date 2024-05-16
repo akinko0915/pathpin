@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pathpin/date_page.dart';
 import 'package:pathpin/map_page.dart';
 import 'package:pathpin/record_page.dart';
 
@@ -40,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> display = [
     const RecordPage(),
     const MapPage(),
-    const DatePage(),
   ];
 
   @override
@@ -48,13 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
    
     return Scaffold(
       appBar: AppBar(
-    
         backgroundColor: const Color.fromRGBO(209, 163, 120, 1),
         title: const Text("Path Pin", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15)),
       ),
-      body: Center(
-        child: display[selectedIndex],
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            display[selectedIndex],
+          ],
+        ),
       ),
+    
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -64,10 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
             label: 'マップ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: '日付',
           ),
         ],
         currentIndex: selectedIndex,
