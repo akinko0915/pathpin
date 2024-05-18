@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:pathpin/places.dart';
 
 class TravelFolder extends StatelessWidget {
   
@@ -36,7 +37,15 @@ class TravelFolder extends StatelessWidget {
     );
 
     final col = 
-            Wrap(
+    GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder:(context) => PlacesPage()),
+        );
+      },
+      child: 
+      Wrap(
               direction: Axis.vertical,
               spacing: 10,
               children: [
@@ -44,7 +53,9 @@ class TravelFolder extends StatelessWidget {
                 styledImg,
                 place,
               ],
-            );
+            )
+    );
+            
     return col;
   }
 }

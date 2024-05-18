@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pathpin/component/page_title.dart';
 import 'package:pathpin/component/travel_folder.dart';
 
-class RecordPage extends StatelessWidget {
-  const RecordPage({Key? key}) : super(key: key);
+class PlacesPage extends StatelessWidget {
+  const PlacesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class RecordPage extends StatelessWidget {
     final folderRow = Container(
       child: Column(
         children: [
-          PageTitle(title: '旅フォルダ'),
+          PageTitle(title: '場所一覧'),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [addButton],
@@ -53,8 +53,6 @@ class RecordPage extends StatelessWidget {
         ],
       ),
     );
-    
-
     return folderRow;
   }
 }
