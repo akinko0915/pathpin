@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 
-class TravelFolder extends StatelessWidget {
+class Place extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,13 @@ class TravelFolder extends StatelessWidget {
       );
   
     final place = 
-    Text('兵庫県', style: TextStyle( fontSize: 10, fontWeight: FontWeight.bold,)
+    Text('神戸', style: TextStyle( fontSize: 10, fontWeight: FontWeight.bold,)
     );
 
     final col = 
     GestureDetector(
       onTap: () {
-        context.go('/record/places');
+        context.go('/record/show/place');
       },
       child: 
       Wrap(

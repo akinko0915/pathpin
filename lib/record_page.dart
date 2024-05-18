@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pathpin/component/page_title.dart';
 import 'package:pathpin/component/travel_folder.dart';
 
@@ -11,7 +12,9 @@ class RecordPage extends StatelessWidget {
     final addButton = Container(
       margin: const EdgeInsets.only(right: 16.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          context.go('/record/create/folder');
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,
           shape: RoundedRectangleBorder(

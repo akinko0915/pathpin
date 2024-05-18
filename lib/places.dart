@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pathpin/component/page_title.dart';
+import 'package:pathpin/component/place.dart';
 import 'package:pathpin/component/travel_folder.dart';
+
 
 class PlacesPage extends StatelessWidget {
   const PlacesPage({Key? key}) : super(key: key);
@@ -11,7 +14,9 @@ class PlacesPage extends StatelessWidget {
     final addButton = Container(
       margin: const EdgeInsets.only(right: 16.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          context.go('/record/create/place');
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,
           shape: RoundedRectangleBorder(
@@ -19,7 +24,7 @@ class PlacesPage extends StatelessWidget {
           ),
         ),
         child: const Text(
-          'フォルダを追加',
+          '場所を追加',
           style: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.bold,
@@ -35,9 +40,9 @@ class PlacesPage extends StatelessWidget {
       spacing: 5,
       runSpacing: 30,
       children: [
-        TravelFolder(),
-        TravelFolder(),
-        TravelFolder(),
+        Place(),
+        Place(),
+        Place(),
       ],
     );
 
