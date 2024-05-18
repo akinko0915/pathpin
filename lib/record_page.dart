@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pathpin/travel_folder.dart';
+import 'package:pathpin/component/travel_folder.dart';
 
 class RecordPage extends StatelessWidget {
   const RecordPage({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class RecordPage extends StatelessWidget {
         ),
       ),
     );
-    
+
     final folders = 
     Wrap(
       direction: Axis.horizontal,
