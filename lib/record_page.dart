@@ -5,11 +5,10 @@ import 'package:pathpin/component/travel_folder.dart';
 import 'package:pathpin/data/dummy_data.dart';
 
 class RecordPage extends StatelessWidget {
-  const RecordPage({Key? key}) : super(key: key);
+  const RecordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final addButton = Container(
       margin: const EdgeInsets.only(right: 16.0),
       child: ElevatedButton(
