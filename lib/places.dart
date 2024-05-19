@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pathpin/component/back_icon.dart';
 import 'package:pathpin/component/page_title.dart';
 import 'package:pathpin/component/place.dart';
-import 'package:pathpin/component/travel_folder.dart';
 
 
 class PlacesPage extends StatelessWidget {
@@ -10,7 +10,7 @@ class PlacesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    
     final addButton = Container(
       margin: const EdgeInsets.only(right: 16.0),
       child: ElevatedButton(
@@ -49,6 +49,10 @@ class PlacesPage extends StatelessWidget {
     final folderRow = Container(
       child: Column(
         children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [BackIcon()],
+          ),
           PageTitle(title: '場所一覧'),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

@@ -37,7 +37,13 @@ final router = GoRouter(
                 ),
                 GoRoute(
                   path: 'create/folder',
-                  builder: (context, state) => const CreateFolder(),
+                  builder: (context, state) => CreateFolder(
+                    onFolderCreated: (folderName) {
+                      // print('新しいフォルダ名: $folderName');
+                      // // 前の画面に戻る
+                      context.pop();
+                    },
+                  ),
                 ),
                 GoRoute(
                   path: 'create/place',

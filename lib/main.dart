@@ -19,10 +19,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routerConfig: router,
-      // 以下３行を追加
-      // routerDelegate: router.routerDelegate,
-      // routeInformationParser: router.routeInformationParser,
-      // routeInformationProvider: router.routeInformationProvider,
     );
   }
 }
@@ -55,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: Header(),
+      appBar: const Header(),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeTab,

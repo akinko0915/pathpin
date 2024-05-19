@@ -47,7 +47,7 @@ class RecordPage extends StatelessWidget {
     final folderRow = Container(
       child: Column(
         children: [
-          PageTitle(title: '旅フォルダ'),
+          const PageTitle(title: '旅フォルダ'),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [addButton],

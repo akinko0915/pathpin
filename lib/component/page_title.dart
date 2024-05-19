@@ -9,7 +9,7 @@ class PageTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleRow = Row(
       children: [
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           title, 
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20, )
@@ -23,7 +23,7 @@ class PageTitle extends StatelessWidget {
       children: [
         titleRow,
         const Divider(color: Colors.black, thickness: 2, indent: 10, endIndent: 10,),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
       ],
     );
 
