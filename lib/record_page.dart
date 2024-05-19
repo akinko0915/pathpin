@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pathpin/component/page_title.dart';
 import 'package:pathpin/component/travel_folder.dart';
+import 'package:pathpin/data/dummy_data.dart';
 
 class RecordPage extends StatelessWidget {
   const RecordPage({Key? key}) : super(key: key);
@@ -37,11 +38,8 @@ class RecordPage extends StatelessWidget {
       direction: Axis.horizontal,
       spacing: 5,
       runSpacing: 30,
-      children: [
-        TravelFolder(),
-        TravelFolder(),
-        TravelFolder(),
-      ],
+      children: 
+        dummyFolders.map((folder) => TravelFolder(folder: folder)).toList(),
     );
 
     final folderRow = Container(

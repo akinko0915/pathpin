@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:pathpin/data/dummy_data.dart';
 
 
 class TravelFolder extends StatelessWidget {
-  
+  final Folder folder;
+
+  const TravelFolder({Key? key, required this.folder}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final today = DateTime.now();
     final dateFormat = DateFormat('yyyy/M/d');
-    final date = dateFormat.format(today);
+    final date = dateFormat.format(DateTime.parse(folder.createdAt));
     final styledDate = Text(
       date,
       style: const TextStyle(
@@ -19,6 +22,7 @@ class TravelFolder extends StatelessWidget {
       ),
     );
 
+    final place = Text(folder.name, style: const TextStyle( fontSize: 10, fontWeight: FontWeight.bold,));
     final img = Image.asset('assets/images/kobe-harbarland.png', fit: BoxFit.cover);
     final styledImg = 
     SizedBox(
@@ -33,9 +37,6 @@ class TravelFolder extends StatelessWidget {
       ),
       );
   
-    final place = 
-    Text('兵庫県', style: TextStyle( fontSize: 10, fontWeight: FontWeight.bold,)
-    );
 
     final col = 
     GestureDetector(
@@ -56,4 +57,7 @@ class TravelFolder extends StatelessWidget {
             
     return col;
   }
+}
+
+class $ {
 }
