@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/services.dart';
 import 'package:pathpin/date_page.dart';
 import 'package:pathpin/map/map_page.dart';
@@ -7,11 +8,16 @@ import 'env/env.dart';
 import 'dart:html' as html;
 
 void main() {
-  final script = html.ScriptElement()
-    ..src = 'https://maps.googleapis.com/maps/api/js?key=${Env.key}';
-  html.document.head!.append(script);
-  const platform = MethodChannel('com.example.app/api_key');
-  platform.invokeMethod('setGoogleMapsApiKey', Env.key);
+  if (kIsWeb) {
+    // Webの場合
+    final script = html.ScriptElement()
+      ..src = 'https://maps.googleapis.com/maps/api/js?key=${Env.key}';
+    html.document.head!.append(script);
+  } else {
+    // ネイティブの場合
+    const platform = MethodChannel('com.example.app/api_key');
+    platform.invokeMethod('setGoogleMapsApiKey', Env.key);
+  }
   runApp(const MyApp());
 }
 

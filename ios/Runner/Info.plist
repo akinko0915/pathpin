@@ -5,7 +5,7 @@
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>GMSApiKey</key>
-	<string>AIzaSyCmxHUMm8Fr4BkAztZoyp8419mm52C_zXU</string>
+	<string>${key}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
