@@ -13,6 +13,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPage extends State<SearchPage> {
   late GooglePlace googlePlace;
   List<AutocompletePrediction> predictions = []; // predictionsに検索結果を格納
+    List LatLng = []; // 経度と緯度を格納するための配列
 
   @override
   void initState() {
@@ -90,9 +91,17 @@ class _SearchPage extends State<SearchPage> {
                             .description
                             .toString()), // 検索結果を表示。descriptionを指定すると場所名が表示されます。
                         onTap: () async {
-// 検索した住所を押した時の処理を記載
+ List? locations = await locationFromAddress(
+                              predictions[index]
+                                  .description
+                                  .toString()); // locationFromAddress()に検索結果のpredictions[index].description.toString()を渡す
+
+                          setState(() { // 取得した経度と緯度を配列に格納
+                            LatLng.add(locations.first.latitude);
+                            LatLng.add(locations.first.longitude);
                         },
-                      ),
+                      );
+                      Navigator.pop(context, LatLng);
                     );
                   },
                 ),

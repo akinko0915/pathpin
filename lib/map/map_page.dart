@@ -80,6 +80,7 @@ class _MapPageState extends State<MapPage> {
     return '';
   }
 
+// DBへの追加用の関数
   // Future<void> _saveToDatabase(LatLng position, String placeInfo) async {
   //   // Replace the URL with your actual endpoint
   //   final url = Uri.parse('https://your-database-endpoint.com/save');
@@ -129,6 +130,15 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
+// 緯度と経度をもとに画面を移動させる処理
+    Future<void> searchLocation(List result) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(result[0], result[1]), // CameraPositionのtargetに経度・緯度の順で指定します。
+      zoom: 15,
+    )));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -147,66 +157,20 @@ class _MapPageState extends State<MapPage> {
           onTap: _onTap,
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-// 検索画面へ遷移させる処理
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchPage()),
-            );
-          },
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return SearchPage();
+              },
+            ),
+          ).then((value) async {
+            await searchLocation(value);
+          });
+        },
           child: Icon(Icons.search),
         ),
       ),
     );
   }
-
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: Stack(
-  //       children: <Widget>[
-  //         GoogleMap(
-  //           onMapCreated: _onMapCreated,
-  //           initialCameraPosition: CameraPosition(
-  //             target: _center,
-  //             zoom: 11.0,
-  //           ),
-  //           markers: _markers,
-  //           onTap: _onTap,
-  //         ),
-  //         Positioned(
-  //           top: 10,
-  //           left: 10,
-  //           right: 10,
-  //           child: TypeAheadField(
-  //             textFieldConfiguration: TextFieldConfiguration(
-  //               controller: _typeAheadController,
-  //               decoration: InputDecoration(
-  //                 hintText: 'Search Location',
-  //                 border: OutlineInputBorder(
-  //                   borderRadius: BorderRadius.circular(8.0),
-  //                   borderSide: BorderSide(color: Colors.grey),
-  //                 ),
-  //                 prefixIcon: Icon(Icons.search),
-  //               ),
-  //             ),
-  //             suggestionsCallback: (pattern) async {
-  //               // ここに検索ロジックを実装
-  //               return [];
-  //             },
-  //             itemBuilder: (context, suggestion) {
-  //               // ここに検索結果のUIを実装
-  //               return ListTile(
-  //                 leading: Icon(Icons.location_on),
-  //                 title: Text(suggestion.toString()),
-  //               );
-  //             },
-  //             onSuggestionSelected: (suggestion) {
-  //               // 検索結果が選択されたときの処理を実装
-  //             },
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
